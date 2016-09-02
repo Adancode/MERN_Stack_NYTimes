@@ -15,7 +15,7 @@ var Results = React.createClass({
      				</div>
      				<div className="panel-body text-center">
 
-     						<h1>Result One</h1>
+     						<h1>{this.props.results}</h1>
                                    <h1>Result Two</h1>
                                    <h1>Result Three</h1>
                                    <h1>Result Four</h1>

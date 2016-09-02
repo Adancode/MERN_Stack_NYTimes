@@ -19,18 +19,41 @@ var Main = React.createClass({
 		return {
 			search_term: "Iraq",
 			begin_year: "19900701",
-               "end_year": "20000701"
+               end_year: "20000701",
+               results: "passedResult"
 		}
+	},
+
+     handleChange: function(event){
+
+    	// Here we create syntax to capture any change in text to the query terms (pre-search).
+    	// See this Stack Overflow answer for more details:
+    	// http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
+    	var newState = {};
+    	newState[event.target.id] = event.target.value;
+    	this.setState(newState);
+
 	},
 
      // If the component changes (i.e. if a search is entered)...
      handleClick: function(){
+          /*this.setState({
+               this.state.search_term: ,
+               this.state.begin_year: ,
+               this.state.end_year
+          });*/
+
           // Run the query for the address
           helpers.runQuery(this.state.search_term, this.state.begin_year, this.state.end_year)
                .then(function(data){
                     console.log(data);
+                    /*var newState = {};
+                   	newState[results] = "hahaha";//data.response.docs[0].abstract;
+                   	this.setState(newState);
+                    console.log(newState);*/
                }.bind(this))
      },
+
 	// Here we render the component
 	render: function(){
 
@@ -61,13 +84,13 @@ var Main = React.createClass({
                                                   {/*Note how each of the form elements has an id that matches the state. This is not necessary but it is convenient.
                                                        Also note how each has an onChange event associated with our handleChange event.
                                                   */}
-                                                  <input type="text" className="form-control text-center" id="term" onChange= {this.handleChange} required/>
+                                                  <input type="text" className="form-control text-center" id="search_term" onChange= {this.handleChange} required/>
                                                   <br />
-                                                  <h4 className="text-center"><strong>Start Year</strong></h4>
-                                                  <input type="text" className="form-control text-center" id="start" onChange= {this.handleChange} required/>
+                                                  <h4 className="text-center"><strong>Start Date (YYYYMMDD)</strong></h4>
+                                                  <input type="text" className="form-control text-center" id="begin_year" onChange= {this.handleChange} required/>
                                                   <br />
-                                                  <h4 className="text-center"><strong>End Year</strong></h4>
-                                                  <input type="text" className="form-control text-center" id="end" onChange= {this.handleChange} required/>
+                                                  <h4 className="text-center"><strong>End Date (YYYYMMDD</strong></h4>
+                                                  <input type="text" className="form-control text-center" id="end_year" onChange= {this.handleChange} required/>
                                                   <br />
                                                   <button type="button" className="btn btn-primary btn-block text-center" onClick={this.handleClick}>Search</button>
                                              </div>
@@ -80,7 +103,7 @@ var Main = React.createClass({
 					<div className="row">
 
 						{/*Added this.props.children to dump all of the child components into place*/}
-                              <Results />
+                              <Results results={this.state.results}/>
 
 					</div>
 

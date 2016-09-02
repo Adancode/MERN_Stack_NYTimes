@@ -25465,15 +25465,36 @@
 	          return {
 	               search_term: "Iraq",
 	               begin_year: "19900701",
-	               "end_year": "20000701"
+	               end_year: "20000701",
+	               results: "passedResult"
 	          };
+	     },
+
+	     handleChange: function handleChange(event) {
+
+	          // Here we create syntax to capture any change in text to the query terms (pre-search).
+	          // See this Stack Overflow answer for more details:
+	          // http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
+	          var newState = {};
+	          newState[event.target.id] = event.target.value;
+	          this.setState(newState);
 	     },
 
 	     // If the component changes (i.e. if a search is entered)...
 	     handleClick: function handleClick() {
+	          /*this.setState({
+	               this.state.search_term: ,
+	               this.state.begin_year: ,
+	               this.state.end_year
+	          });*/
+
 	          // Run the query for the address
 	          helpers.runQuery(this.state.search_term, this.state.begin_year, this.state.end_year).then(function (data) {
 	               console.log(data);
+	               /*var newState = {};
+	               newState[results] = "hahaha";//data.response.docs[0].abstract;
+	               this.setState(newState);
+	               console.log(newState);*/
 	          }.bind(this));
 	     },
 
@@ -25540,7 +25561,7 @@
 	                                                            'Topic'
 	                                                       )
 	                                                  ),
-	                                                  React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'term', onChange: this.handleChange, required: true }),
+	                                                  React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'search_term', onChange: this.handleChange, required: true }),
 	                                                  React.createElement('br', null),
 	                                                  React.createElement(
 	                                                       'h4',
@@ -25548,10 +25569,10 @@
 	                                                       React.createElement(
 	                                                            'strong',
 	                                                            null,
-	                                                            'Start Year'
+	                                                            'Start Date (YYYYMMDD)'
 	                                                       )
 	                                                  ),
-	                                                  React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'start', onChange: this.handleChange, required: true }),
+	                                                  React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'begin_year', onChange: this.handleChange, required: true }),
 	                                                  React.createElement('br', null),
 	                                                  React.createElement(
 	                                                       'h4',
@@ -25559,10 +25580,10 @@
 	                                                       React.createElement(
 	                                                            'strong',
 	                                                            null,
-	                                                            'End Year'
+	                                                            'End Date (YYYYMMDD'
 	                                                       )
 	                                                  ),
-	                                                  React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'end', onChange: this.handleChange, required: true }),
+	                                                  React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'end_year', onChange: this.handleChange, required: true }),
 	                                                  React.createElement('br', null),
 	                                                  React.createElement(
 	                                                       'button',
@@ -25578,7 +25599,7 @@
 	                    React.createElement(
 	                         'div',
 	                         { className: 'row' },
-	                         React.createElement(Results, null)
+	                         React.createElement(Results, { results: this.state.results })
 	                    ),
 	                    React.createElement(
 	                         'div',
@@ -25638,7 +25659,7 @@
 	          React.createElement(
 	            "h1",
 	            null,
-	            "Result One"
+	            this.props.results
 	          ),
 	          React.createElement(
 	            "h1",
