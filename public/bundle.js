@@ -25455,113 +25455,119 @@
 	var Saved = __webpack_require__(225);
 
 	var Main = React.createClass({
-		displayName: 'Main',
+	  displayName: 'Main',
 
-		// Here we render the component
-		render: function render() {
+	  // Here we render the component
+	  render: function render() {
 
-			return React.createElement(
-				'div',
-				{ className: 'container' },
-				React.createElement(
-					'div',
-					{ className: 'row' },
-					React.createElement(
-						'div',
-						{ className: 'jumbotron text-center' },
-						React.createElement(
-							'h1',
-							null,
-							'New York TImes MERN Stack Article Search App'
-						),
-						React.createElement(
-							'p',
-							null,
-							React.createElement(
-								'em',
-								null,
-								'Search for and annotate articles of interest!'
-							)
-						)
-					),
-					React.createElement(
-						'div',
-						{ className: 'row' },
-						React.createElement(
-							'div',
-							{ className: 'col-lg-12' },
-							React.createElement(
-								'div',
-								{ className: 'panel panel-default' },
-								React.createElement(
-									'div',
-									{ className: 'panel-heading' },
-									React.createElement(
-										'h3',
-										{ className: 'panel-title text-center' },
-										'Search'
-									)
-								),
-								React.createElement(
-									'div',
-									{ className: 'panel-body' },
-									React.createElement(
-										'p',
-										null,
-										React.createElement(
-											'strong',
-											null,
-											'Title:'
-										),
-										' Space Jam '
-									),
-									React.createElement(
-										'p',
-										null,
-										React.createElement(
-											'strong',
-											null,
-											'Year:'
-										),
-										' 1996'
-									),
-									React.createElement(
-										'p',
-										null,
-										React.createElement(
-											'strong',
-											null,
-											'Director:'
-										),
-										' Joe Pytka'
-									),
-									React.createElement(
-										'p',
-										null,
-										React.createElement(
-											'strong',
-											null,
-											'Stars:'
-										),
-										' Michael Jordan, Wayne Knight, Theresa Randle '
-									)
-								)
-							)
-						)
-					),
-					React.createElement(
-						'div',
-						{ className: 'row' },
-						React.createElement(Results, null)
-					),
-					React.createElement(
-						'div',
-						{ className: 'row' },
-						React.createElement(Saved, null)
-					)
-				)
-			);
-		}
+	    return React.createElement(
+	      'div',
+	      { className: 'container' },
+	      React.createElement(
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'jumbotron text-center' },
+	          React.createElement(
+	            'h1',
+	            null,
+	            'New York TImes MERN Stack Article Search App'
+	          ),
+	          React.createElement(
+	            'p',
+	            null,
+	            React.createElement(
+	              'em',
+	              null,
+	              'Search for and annotate articles of interest!'
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'row' },
+	          React.createElement(
+	            'div',
+	            { className: 'col-lg-12' },
+	            React.createElement(
+	              'div',
+	              { className: 'panel panel-default' },
+	              React.createElement(
+	                'div',
+	                { className: 'panel-heading' },
+	                React.createElement(
+	                  'h3',
+	                  { className: 'panel-title text-center' },
+	                  'Search'
+	                )
+	              ),
+	              React.createElement(
+	                'div',
+	                { className: 'panel-body' },
+	                React.createElement(
+	                  'form',
+	                  null,
+	                  React.createElement(
+	                    'div',
+	                    { className: 'form-group' },
+	                    React.createElement(
+	                      'h4',
+	                      { className: 'text-center' },
+	                      React.createElement(
+	                        'strong',
+	                        null,
+	                        'Topic'
+	                      )
+	                    ),
+	                    React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'term', onChange: this.handleChange, required: true }),
+	                    React.createElement('br', null),
+	                    React.createElement(
+	                      'h4',
+	                      { className: 'text-center' },
+	                      React.createElement(
+	                        'strong',
+	                        null,
+	                        'Start Year'
+	                      )
+	                    ),
+	                    React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'start', onChange: this.handleChange, required: true }),
+	                    React.createElement('br', null),
+	                    React.createElement(
+	                      'h4',
+	                      { className: 'text-center' },
+	                      React.createElement(
+	                        'strong',
+	                        null,
+	                        'End Year'
+	                      )
+	                    ),
+	                    React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'end', onChange: this.handleChange, required: true }),
+	                    React.createElement('br', null),
+	                    React.createElement(
+	                      'button',
+	                      { type: 'button', className: 'btn btn-primary btn-block text-center', onClick: this.handleClick },
+	                      'Search'
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'row' },
+	          React.createElement(Results, null)
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'row' },
+	          React.createElement(Saved, null)
+	        )
+	      )
+	    );
+	  }
 	});
 
 	// Export the component back for use in other files

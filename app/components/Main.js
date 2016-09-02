@@ -10,6 +10,9 @@ var IndexRoute = ReactRouter.IndexRoute;
 var Results = require('./Children/Results');
 var Saved = require('./Children/Saved');
 
+// Helper Function
+var helpers = require('../utils/helpers.js');
+
 var Main = React.createClass({
 
 	// Here we render the component
@@ -35,10 +38,24 @@ var Main = React.createClass({
                                              <h3 className="panel-title text-center">Search</h3>
                                         </div>
                                         <div className="panel-body">
-                                             <p><strong>Title:</strong> Space Jam </p>
-                                             <p><strong>Year:</strong> 1996</p>
-                                             <p><strong>Director:</strong> Joe Pytka</p>
-                                             <p><strong>Stars:</strong> Michael Jordan, Wayne Knight, Theresa Randle </p>
+                                        <form>
+                                             <div className="form-group">
+                                                  <h4 className="text-center"><strong>Topic</strong></h4>
+
+                                                  {/*Note how each of the form elements has an id that matches the state. This is not necessary but it is convenient.
+                                                       Also note how each has an onChange event associated with our handleChange event.
+                                                  */}
+                                                  <input type="text" className="form-control text-center" id="term" onChange= {this.handleChange} required/>
+                                                  <br />
+                                                  <h4 className="text-center"><strong>Start Year</strong></h4>
+                                                  <input type="text" className="form-control text-center" id="start" onChange= {this.handleChange} required/>
+                                                  <br />
+                                                  <h4 className="text-center"><strong>End Year</strong></h4>
+                                                  <input type="text" className="form-control text-center" id="end" onChange= {this.handleChange} required/>
+                                                  <br />
+                                                  <button type="button" className="btn btn-primary btn-block text-center" onClick={this.handleClick}>Search</button>
+                                             </div>
+                                        </form>
                                         </div>
                                    </div>
                               </div>
