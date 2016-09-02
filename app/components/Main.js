@@ -14,7 +14,23 @@ var Saved = require('./Children/Saved');
 var helpers = require('../utils/helpers.js');
 
 var Main = React.createClass({
+     // Here we set a generic state associated with the number of clicks
+	getInitialState: function(){
+		return {
+			search_term: "Iraq",
+			begin_year: "19900701",
+               "end_year": "20000701"
+		}
+	},
 
+     // If the component changes (i.e. if a search is entered)...
+     handleClick: function(){
+          // Run the query for the address
+          helpers.runQuery(this.state.search_term, this.state.begin_year, this.state.end_year)
+               .then(function(data){
+                    console.log(data);
+               }.bind(this))
+     },
 	// Here we render the component
 	render: function(){
 
@@ -25,7 +41,7 @@ var Main = React.createClass({
 				<div className="row">
 
 					<div className="jumbotron text-center">
-						<h1>New York TImes MERN Stack Article Search App</h1>
+						<h1>New York Times MERN Stack Article Search App</h1>
 						<p><em>Search for and annotate articles of interest!</em></p>
 						{/* <a href="#/info"><button className="btn btn-default">Info</button></a>
 						<a href="#/chat"><button className="btn btn-default">Comments</button></a> */}
@@ -81,5 +97,15 @@ var Main = React.createClass({
 	}
 });
 
+
+
+// These variables will hold the results we get from the user's inputs via HTML
+// var queryTerm 	= "Iraq";
+// //var numArticles 	= 5;
+// var startYear 	= 1990;
+// var endYear = 2000;
+//
+//
+// helpers.runQuery(queryTerm, startYear, endYear);
 // Export the component back for use in other files
 module.exports = Main;
