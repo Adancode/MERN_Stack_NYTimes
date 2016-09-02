@@ -14,7 +14,8 @@ var Saved = require('./Children/Saved');
 var helpers = require('../utils/helpers.js');
 
 var Main = React.createClass({
-     // Here we set a generic state associated with the number of clicks
+     // Here we set a generic state associated with the number of click
+
 	getInitialState: function(){
 		return {
 			search_term: "Iraq",
@@ -35,23 +36,18 @@ var Main = React.createClass({
 
 	},
 
-     // If the component changes (i.e. if a search is entered)...
+     // If the component changes (i.e. if a search is entered)...handleClick
      handleClick: function(){
-          /*this.setState({
-               this.state.search_term: ,
-               this.state.begin_year: ,
-               this.state.end_year
-          });*/
-
           // Run the query for the address
           helpers.runQuery(this.state.search_term, this.state.begin_year, this.state.end_year)
                .then(function(data){
                     console.log(data);
-                    /*var newState = {};
-                   	newState[results] = "hahaha";//data.response.docs[0].abstract;
-                   	this.setState(newState);
-                    console.log(newState);*/
-               }.bind(this))
+                    var string = JSON.stringify(data);
+                    this.setState({results: string})
+                    console.log(string);
+               }.bind(this))/*.then(function(data) {
+
+               }.bind(this))*/
      },
 
 	// Here we render the component

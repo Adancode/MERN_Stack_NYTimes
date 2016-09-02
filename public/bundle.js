@@ -25426,8 +25426,8 @@
 
 	// Reference the high-level components
 	var Main = __webpack_require__(223);
-	var Child1 = __webpack_require__(225);
-	var Child2 = __webpack_require__(246);
+	//var Child1 = require('../components/Children/Saved');
+	//var Child2 = require('../components/Children/Search');
 
 	// Export the Routes
 	module.exports = React.createElement(
@@ -25460,7 +25460,8 @@
 	var Main = React.createClass({
 	     displayName: 'Main',
 
-	     // Here we set a generic state associated with the number of clicks
+	     // Here we set a generic state associated with the number of click
+
 	     getInitialState: function getInitialState() {
 	          return {
 	               search_term: "Iraq",
@@ -25480,22 +25481,16 @@
 	          this.setState(newState);
 	     },
 
-	     // If the component changes (i.e. if a search is entered)...
+	     // If the component changes (i.e. if a search is entered)...handleClick
 	     handleClick: function handleClick() {
-	          /*this.setState({
-	               this.state.search_term: ,
-	               this.state.begin_year: ,
-	               this.state.end_year
-	          });*/
-
 	          // Run the query for the address
 	          helpers.runQuery(this.state.search_term, this.state.begin_year, this.state.end_year).then(function (data) {
 	               console.log(data);
-	               /*var newState = {};
-	               newState[results] = "hahaha";//data.response.docs[0].abstract;
-	               this.setState(newState);
-	               console.log(newState);*/
-	          }.bind(this));
+	               var string = JSON.stringify(data);
+	               this.setState({ results: string });
+	               console.log(string);
+	          }.bind(this)); /*.then(function(data) {
+	                         }.bind(this))*/
 	     },
 
 	     // Here we render the component
@@ -25798,14 +25793,17 @@
 			var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + queryTerm + "&begin_date=" + startYear + "&end_date=" + endYear;
 
 			//console.log("The article limit is" + numArticles + "and the query url is: " + queryURL);
-			console.log("The query url is: " + queryURL);
+			//console.log("The query url is: " + queryURL);
 
 			//Figure out the geolocation
 
 			return axios.get(queryURL).then(function (response) {
-
-				console.log(response);
-				//return response.data.results[0].formatted;
+				var sendThisData = [];
+				for (var i = 0; i < response.data.response.docs.length; i++) {
+					sendThisData += response.data.response.docs[i].headline.main;
+				}
+				//return JSON.stringify(response);
+				return sendThisData;
 			});
 		}
 
@@ -27025,12 +27023,6 @@
 	  };
 	};
 
-
-/***/ },
-/* 246 */
-/***/ function(module, exports) {
-
-	"use strict";
 
 /***/ }
 /******/ ]);

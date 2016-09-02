@@ -32,15 +32,18 @@ var helpers = {
           var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + queryTerm + "&begin_date=" + startYear + "&end_date=" + endYear;
 
 		//console.log("The article limit is" + numArticles + "and the query url is: " + queryURL);
-          console.log("The query url is: " + queryURL);
+          //console.log("The query url is: " + queryURL);
 
 		//Figure out the geolocation
 
 		return axios.get(queryURL)
 			.then(function(response){
-
-				console.log(response);
-				//return response.data.results[0].formatted;
+                    var sendThisData =[];
+				for(var i=0;i<response.data.response.docs.length;i++){
+					sendThisData+=response.data.response.docs[i].headline.main;
+				}
+				//return JSON.stringify(response);
+				return sendThisData;
 		});
 
 	}
