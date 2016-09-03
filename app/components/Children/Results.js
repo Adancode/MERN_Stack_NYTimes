@@ -13,13 +13,13 @@ var Results = React.createClass({
      				<div className="panel-heading">
      					<h3 className="panel-title text-center">Results</h3>
      				</div>
-     				<div className="panel-body text-center">
+     				<div className="panel-body text-left">
 
-     						<h1>{this.props.results}</h1>
-                                   <h1>Result Two</h1>
-                                   <h1>Result Three</h1>
-                                   <h1>Result Four</h1>
-                                   <h1>Result Five</h1>
+     						<h4>{this.props.results0}</h4>
+                                   <h4>{this.props.results1}</h4>
+                                   <h4>{this.props.results2}</h4>
+                                   <h4>{this.props.results3}</h4>
+                                   <h4>{this.props.results4}</h4>
      						{/* <p>{this.props.address}</p> */}
 
      				</div>

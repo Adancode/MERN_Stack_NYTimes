@@ -15,11 +15,11 @@ var Saved = React.createClass({
      				</div>
      				<div className="panel-body text-center">
 
-     						<h1>Saved One</h1>
-                                   <h1>Saved Two</h1>
-                                   <h1>Saved Three</h1>
-                                   <h1>Saved Four</h1>
-                                   <h1>Saved Five</h1>
+     						<h4>Saved One</h4>
+                                   <h4>Saved Two</h4>
+                                   <h4>Saved Three</h4>
+                                   <h4>Saved Four</h4>
+                                   <h4>Saved Five</h4>
      						{/* <p>{this.props.address}</p> */}
      				</div>
      			</div>

@@ -38,12 +38,36 @@ var helpers = {
 
 		return axios.get(queryURL)
 			.then(function(response){
+                    console.log(response);
                     var sendThisData =[];
-				for(var i=0;i<response.data.response.docs.length;i++){
-					sendThisData+=response.data.response.docs[i].headline.main;
-				}
+				// for(var i=0;i<response.data.response.docs.length;i++){
+                    //      sendThisData.push(response.data.response.docs[i].headline.main);
+				// 	//sendThisData+=response.data.response.docs[i].headline.main;
+				// }
+                    // for(var i=0;i<response.data.response.docs.length;i++){
+                    //      sendThisData.push(response.data.response.docs[i].headline.main);
+				// 	//sendThisData+=response.data.response.docs[i].headline.main;
+				// }
+                    // for(var i=0;i<response.data.response.docs.length;i++){
+                    //      sendThisData.push(response.data.response.docs[i].pub_main);
+				// 	//sendThisData+=response.data.response.docs[i].headline.main;
+				// }
+                    //
+                    // /////////////////////////////////////////////////////////////
+                    // console.log(response.data.response.docs[0].pub_date);
+                    //console.log(response.data);
+                    var doc = response.data.response.docs
+                    var returnData = [];
+                    for (var i = 0; i < doc.length; i++) {
+                         if(i < 5) {
+                        returnData.push({title: doc[i].headline.main, url: doc[i].web_url, date:  doc[i].pub_date});
+                         }
+                    }
+                    console.log("returnData")
+                    /////////////////////////////////////////////////////////////
 				//return JSON.stringify(response);
-				return sendThisData;
+				// return sendThisData;
+                    return returnData;
 		});
 
 	}

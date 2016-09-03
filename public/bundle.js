@@ -25464,7 +25464,7 @@
 
 	     getInitialState: function getInitialState() {
 	          return {
-	               search_term: "Iraq",
+	               search_term: "Texas",
 	               begin_year: "19900701",
 	               end_year: "20000701",
 	               results: "passedResult"
@@ -25486,9 +25486,13 @@
 	          // Run the query for the address
 	          helpers.runQuery(this.state.search_term, this.state.begin_year, this.state.end_year).then(function (data) {
 	               console.log(data);
-	               var string = JSON.stringify(data);
-	               this.setState({ results: string });
-	               console.log(string);
+	               //var string = JSON.stringify(data);
+	               this.setState({ results0: data[0].title });
+	               this.setState({ results1: data[1].title });
+	               this.setState({ results2: data[2].title });
+	               this.setState({ results3: data[3].title });
+	               this.setState({ results4: data[4].title });
+	               //console.log(string);
 	          }.bind(this)); /*.then(function(data) {
 	                         }.bind(this))*/
 	     },
@@ -25506,7 +25510,7 @@
 	                         'div',
 	                         { className: 'jumbotron text-center' },
 	                         React.createElement(
-	                              'h1',
+	                              'h2',
 	                              null,
 	                              'New York Times MERN Stack Article Search App'
 	                         ),
@@ -25564,7 +25568,7 @@
 	                                                       React.createElement(
 	                                                            'strong',
 	                                                            null,
-	                                                            'Start Date (YYYYMMDD)'
+	                                                            'Enter a Start Date (YYYYMMDD)'
 	                                                       )
 	                                                  ),
 	                                                  React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'begin_year', onChange: this.handleChange, required: true }),
@@ -25575,7 +25579,7 @@
 	                                                       React.createElement(
 	                                                            'strong',
 	                                                            null,
-	                                                            'End Date (YYYYMMDD'
+	                                                            'Enter an End Date (YYYYMMDD)'
 	                                                       )
 	                                                  ),
 	                                                  React.createElement('input', { type: 'text', className: 'form-control text-center', id: 'end_year', onChange: this.handleChange, required: true }),
@@ -25594,7 +25598,7 @@
 	                    React.createElement(
 	                         'div',
 	                         { className: 'row' },
-	                         React.createElement(Results, { results: this.state.results })
+	                         React.createElement(Results, { results0: this.state.results0, results1: this.state.results1, results2: this.state.results2, results3: this.state.results3, results4: this.state.results4 })
 	                    ),
 	                    React.createElement(
 	                         'div',
@@ -25650,31 +25654,31 @@
 	        ),
 	        React.createElement(
 	          "div",
-	          { className: "panel-body text-center" },
+	          { className: "panel-body text-left" },
 	          React.createElement(
-	            "h1",
+	            "h4",
 	            null,
-	            this.props.results
+	            this.props.results0
 	          ),
 	          React.createElement(
-	            "h1",
+	            "h4",
 	            null,
-	            "Result Two"
+	            this.props.results1
 	          ),
 	          React.createElement(
-	            "h1",
+	            "h4",
 	            null,
-	            "Result Three"
+	            this.props.results2
 	          ),
 	          React.createElement(
-	            "h1",
+	            "h4",
 	            null,
-	            "Result Four"
+	            this.props.results3
 	          ),
 	          React.createElement(
-	            "h1",
+	            "h4",
 	            null,
-	            "Result Five"
+	            this.props.results4
 	          )
 	        )
 	      )
@@ -25720,27 +25724,27 @@
 	          "div",
 	          { className: "panel-body text-center" },
 	          React.createElement(
-	            "h1",
+	            "h4",
 	            null,
 	            "Saved One"
 	          ),
 	          React.createElement(
-	            "h1",
+	            "h4",
 	            null,
 	            "Saved Two"
 	          ),
 	          React.createElement(
-	            "h1",
+	            "h4",
 	            null,
 	            "Saved Three"
 	          ),
 	          React.createElement(
-	            "h1",
+	            "h4",
 	            null,
 	            "Saved Four"
 	          ),
 	          React.createElement(
-	            "h1",
+	            "h4",
 	            null,
 	            "Saved Five"
 	          )
@@ -25788,24 +25792,48 @@
 	// Helper Functions (in this case the only one is runQuery)
 	var helpers = {
 
-		runQuery: function runQuery(queryTerm, startYear, endYear) {
-			// Based on the queryTerm we will create a queryURL
-			var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + queryTerm + "&begin_date=" + startYear + "&end_date=" + endYear;
+	                runQuery: function runQuery(queryTerm, startYear, endYear) {
+	                                // Based on the queryTerm we will create a queryURL
+	                                var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + queryTerm + "&begin_date=" + startYear + "&end_date=" + endYear;
 
-			//console.log("The article limit is" + numArticles + "and the query url is: " + queryURL);
-			//console.log("The query url is: " + queryURL);
+	                                //console.log("The article limit is" + numArticles + "and the query url is: " + queryURL);
+	                                //console.log("The query url is: " + queryURL);
 
-			//Figure out the geolocation
+	                                //Figure out the geolocation
 
-			return axios.get(queryURL).then(function (response) {
-				var sendThisData = [];
-				for (var i = 0; i < response.data.response.docs.length; i++) {
-					sendThisData += response.data.response.docs[i].headline.main;
-				}
-				//return JSON.stringify(response);
-				return sendThisData;
-			});
-		}
+	                                return axios.get(queryURL).then(function (response) {
+	                                                console.log(response);
+	                                                var sendThisData = [];
+	                                                // for(var i=0;i<response.data.response.docs.length;i++){
+	                                                //      sendThisData.push(response.data.response.docs[i].headline.main);
+	                                                // 	//sendThisData+=response.data.response.docs[i].headline.main;
+	                                                // }
+	                                                // for(var i=0;i<response.data.response.docs.length;i++){
+	                                                //      sendThisData.push(response.data.response.docs[i].headline.main);
+	                                                // 	//sendThisData+=response.data.response.docs[i].headline.main;
+	                                                // }
+	                                                // for(var i=0;i<response.data.response.docs.length;i++){
+	                                                //      sendThisData.push(response.data.response.docs[i].pub_main);
+	                                                // 	//sendThisData+=response.data.response.docs[i].headline.main;
+	                                                // }
+	                                                //
+	                                                // /////////////////////////////////////////////////////////////
+	                                                // console.log(response.data.response.docs[0].pub_date);
+	                                                //console.log(response.data);
+	                                                var doc = response.data.response.docs;
+	                                                var returnData = [];
+	                                                for (var i = 0; i < doc.length; i++) {
+	                                                                if (i < 5) {
+	                                                                                returnData.push({ title: doc[i].headline.main, url: doc[i].web_url, date: doc[i].pub_date });
+	                                                                }
+	                                                }
+	                                                console.log("returnData");
+	                                                /////////////////////////////////////////////////////////////
+	                                                //return JSON.stringify(response);
+	                                                // return sendThisData;
+	                                                return returnData;
+	                                });
+	                }
 
 	};
 
