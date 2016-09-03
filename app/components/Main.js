@@ -1,6 +1,6 @@
 // Include React
 var React = require('react');
-
+var axios = require('axios');
 // Included all of the React Router dependencies
 var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
@@ -36,10 +36,6 @@ var Main = React.createClass({
 
 	},
 
-     saveArticle: function() {
-
-     },
-
      // If the component changes (i.e. if a search is entered)...handleClick
      handleClick: function(){
           // Run the query for the address
@@ -64,6 +60,8 @@ var Main = React.createClass({
                     // this.setState({resultsTitle2: data[2].title, resultsurl2: data[2].url, resultsDate2: data[2].date});
                     // this.setState({resultsTitle3: data[3].title, resultsurl3: data[3].url, resultsDate3: data[3].date});
                     // this.setState({resultsTitle4: data[4].title, resultsurl4: data[4].url, resultsDate4: data[4].date});
+                    // If it does, then update the clickcount in MongoDB
+                    //{title: this.state.results0, url: this.state.url0}
 
                     //console.log(string);
                }.bind(this))/*.then(function(data) {
@@ -120,16 +118,11 @@ var Main = React.createClass({
 					<div className="row">
 
 						{/*Added this.props.children to dump all of the child components into place*/}
-                              <Results results0={this.state.results0} results1={this.state.results1} results2={this.state.results2} results3={this.state.results3} results4={this.state.results4} url0={this.state.url0} url1={this.state.url1} url2={this.state.url2} url3={this.state.url3} url4={this.state.url4} saveArticle={this.state.saveArticle}/>
+                              <Results results0={this.state.results0} results1={this.state.results1} results2={this.state.results2} results3={this.state.results3} results4={this.state.results4} url0={this.state.url0} url1={this.state.url1} url2={this.state.url2} url3={this.state.url3} url4={this.state.url4}/>
 
 					</div>
 
-                         <div className="row">
 
-						{/*Added this.props.children to dump all of the child components into place*/}
-                              <Saved />
-
-					</div>
 				</div>
 
 			</div>

@@ -9,7 +9,7 @@ var Route = Router.Route;
 var IndexRoute	= Router.IndexRoute;
 
 // Reference the high-level components
-var Main = require('../components/Main');
+var Main = require('../components/Main.js');
 //var Child1 = require('../components/Children/Saved');
 //var Child2 = require('../components/Children/Search');
 

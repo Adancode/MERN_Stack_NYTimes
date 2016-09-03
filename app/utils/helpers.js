@@ -80,6 +80,7 @@ var helpers = {
                          returnData[i].push(doc[i].web_url);
                          returnData[i].push(doc[i].pub_date);
                     }
+                    
                     /////////////////////////////////////////////////////////////
 				//return JSON.stringify(response);
 				// return sendThisData;

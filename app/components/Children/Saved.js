@@ -15,7 +15,7 @@ var Saved = React.createClass({
      				</div>
      				<div className="panel-body text-center">
 
-     						<h4>Saved One</h4>
+     						<h4><a href={this.props.savedurl}>{this.props.savedtitle}</a></h4>
                                    <h4>Saved Two</h4>
                                    <h4>Saved Three</h4>
                                    <h4>Saved Four</h4>

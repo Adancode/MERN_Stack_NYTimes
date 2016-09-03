@@ -25444,18 +25444,18 @@
 
 	// Include React
 	var React = __webpack_require__(1);
-
+	var axios = __webpack_require__(224);
 	// Included all of the React Router dependencies
 	var ReactRouter = __webpack_require__(159);
 	var Router = ReactRouter.Router;
 	var Route = ReactRouter.Route;
 	var IndexRoute = ReactRouter.IndexRoute;
 
-	var Results = __webpack_require__(224);
-	var Saved = __webpack_require__(225);
+	var Results = __webpack_require__(243);
+	var Saved = __webpack_require__(244);
 
 	// Helper Function
-	var helpers = __webpack_require__(226);
+	var helpers = __webpack_require__(245);
 
 	var Main = React.createClass({
 	     displayName: 'Main',
@@ -25481,8 +25481,6 @@
 	          this.setState(newState);
 	     },
 
-	     saveArticle: function saveArticle() {},
-
 	     // If the component changes (i.e. if a search is entered)...handleClick
 	     handleClick: function handleClick() {
 	          // Run the query for the address
@@ -25506,6 +25504,8 @@
 	               // this.setState({resultsTitle2: data[2].title, resultsurl2: data[2].url, resultsDate2: data[2].date});
 	               // this.setState({resultsTitle3: data[3].title, resultsurl3: data[3].url, resultsDate3: data[3].date});
 	               // this.setState({resultsTitle4: data[4].title, resultsurl4: data[4].url, resultsDate4: data[4].date});
+	               // If it does, then update the clickcount in MongoDB
+	               //{title: this.state.results0, url: this.state.url0}
 
 	               //console.log(string);
 	          }.bind(this)); /*.then(function(data) {
@@ -25613,12 +25613,7 @@
 	                    React.createElement(
 	                         'div',
 	                         { className: 'row' },
-	                         React.createElement(Results, { results0: this.state.results0, results1: this.state.results1, results2: this.state.results2, results3: this.state.results3, results4: this.state.results4, url0: this.state.url0, url1: this.state.url1, url2: this.state.url2, url3: this.state.url3, url4: this.state.url4, saveArticle: this.state.saveArticle })
-	                    ),
-	                    React.createElement(
-	                         'div',
-	                         { className: 'row' },
-	                         React.createElement(Saved, null)
+	                         React.createElement(Results, { results0: this.state.results0, results1: this.state.results1, results2: this.state.results2, results3: this.state.results3, results4: this.state.results4, url0: this.state.url0, url1: this.state.url1, url2: this.state.url2, url3: this.state.url3, url4: this.state.url4 })
 	                    )
 	               )
 	          );
@@ -25640,315 +25635,22 @@
 /* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	// Include React
-	var React = __webpack_require__(1);
-
-	var buttonStyle = {
-	  marginRight: '20px',
-	  marginLeft: '10px',
-	  clear: 'both',
-	  marginBottom: '10px'
-	};
-
-	var articleStyle = {
-	  display: 'inline-block',
-	  minWidth: '500px'
-	};
-
-	// This is the results component
-	var Results = React.createClass({
-	  displayName: 'Results',
-
-	  // Here we render the function
-	  render: function render() {
-	    console.log(this.props.results1);
-	    console.log(this.props.results1);
-	    return React.createElement(
-	      'div',
-	      { className: 'col-lg-12' },
-	      React.createElement(
-	        'div',
-	        { className: 'panel panel-default' },
-	        React.createElement(
-	          'div',
-	          { className: 'panel-heading' },
-	          React.createElement(
-	            'h3',
-	            { className: 'panel-title text-center' },
-	            'Results'
-	          )
-	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'panel-body text-left' },
-	          React.createElement(
-	            'h4',
-	            null,
-	            React.createElement(
-	              'button',
-	              { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.props.saveArticle },
-	              'Save'
-	            ),
-	            React.createElement(
-	              'a',
-	              { style: articleStyle, href: this.props.url0, target: '_blank' },
-	              this.props.results0
-	            )
-	          ),
-	          React.createElement(
-	            'h4',
-	            null,
-	            React.createElement(
-	              'button',
-	              { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.props.saveArticle },
-	              'Save'
-	            ),
-	            React.createElement(
-	              'a',
-	              { style: articleStyle, href: this.props.url1, target: '_blank' },
-	              this.props.results1
-	            )
-	          ),
-	          React.createElement(
-	            'h4',
-	            null,
-	            React.createElement(
-	              'button',
-	              { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.props.saveArticle },
-	              'Save'
-	            ),
-	            React.createElement(
-	              'a',
-	              { style: articleStyle, href: this.props.url2, target: '_blank' },
-	              this.props.results2
-	            )
-	          ),
-	          React.createElement(
-	            'h4',
-	            null,
-	            React.createElement(
-	              'button',
-	              { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.props.saveArticle },
-	              'Save'
-	            ),
-	            React.createElement(
-	              'a',
-	              { style: articleStyle, href: this.props.url3, target: '_blank' },
-	              this.props.results3
-	            )
-	          ),
-	          React.createElement(
-	            'h4',
-	            null,
-	            React.createElement(
-	              'button',
-	              { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.props.saveArticle },
-	              'Save'
-	            ),
-	            React.createElement(
-	              'a',
-	              { style: articleStyle, href: this.props.url4, target: '_blank' },
-	              this.props.results4
-	            )
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-
-	// Export the component back for use in other files
-	module.exports = Results;
+	module.exports = __webpack_require__(225);
 
 /***/ },
 /* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
-	// Include React
-	var React = __webpack_require__(1);
-
-	// This is the results component
-	var Saved = React.createClass({
-	  displayName: "Saved",
-
-	  // Here we render the function
-	  render: function render() {
-
-	    return React.createElement(
-	      "div",
-	      { className: "col-lg-12" },
-	      React.createElement(
-	        "div",
-	        { className: "panel panel-default" },
-	        React.createElement(
-	          "div",
-	          { className: "panel-heading" },
-	          React.createElement(
-	            "h3",
-	            { className: "panel-title text-center" },
-	            "Saved"
-	          )
-	        ),
-	        React.createElement(
-	          "div",
-	          { className: "panel-body text-center" },
-	          React.createElement(
-	            "h4",
-	            null,
-	            "Saved One"
-	          ),
-	          React.createElement(
-	            "h4",
-	            null,
-	            "Saved Two"
-	          ),
-	          React.createElement(
-	            "h4",
-	            null,
-	            "Saved Three"
-	          ),
-	          React.createElement(
-	            "h4",
-	            null,
-	            "Saved Four"
-	          ),
-	          React.createElement(
-	            "h4",
-	            null,
-	            "Saved Five"
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-
-	// Export the component back for use in other files
-	module.exports = Saved;
-
-/***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	// Include the axios package for performing HTTP requests (promise based alternative to request)
-	var axios = __webpack_require__(227);
-
-	// This variable will be pre-programmed with our authentication key (the one we received when we registered)
-	var authKey = "159df7a0ef7748f482425129c491ff9d";
-
-	// SETUP VARIABLES
-	// ==========================================================
-
-	// This variable will be pre-programmed with our authentication key (the one we received when we registered)
-	// var authKey = "159df7a0ef7748f482425129c491ff9d";
-	//
-	// // These variables will hold the results we get from the user's inputs via HTML
-	// var queryTerm 	= "Iraq";
-	// //var numArticles 	= 5;
-	// var startYear 	= 1990;
-	// var endYear		= 2000;
-	//
-	// // Based on the queryTerm we will create a queryURL
-	// var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + queryTerm + "&begin_date=" + startYear + "&end_date=" + endYear;
-	//
-	// //"https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=159df7a0ef7748f482425129c491ff9d&q=Iraq?begin_date=1999?end_date=2000";
-	//
-	// // Array to hold the various article info
-	// var articleCounter = 0;
-
-	// Helper Functions (in this case the only one is runQuery)
-	var helpers = {
-
-	                runQuery: function runQuery(queryTerm, startYear, endYear) {
-	                                // Based on the queryTerm we will create a queryURL
-	                                var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + queryTerm + "&begin_date=" + startYear + "&end_date=" + endYear;
-
-	                                //console.log("The article limit is" + numArticles + "and the query url is: " + queryURL);
-	                                //console.log("The query url is: " + queryURL);
-
-	                                //Figure out the geolocation
-
-	                                return axios.get(queryURL).then(function (response) {
-	                                                console.log(response);
-	                                                var sendThisData = [];
-	                                                // for(var i=0;i<response.data.response.docs.length;i++){
-	                                                //      sendThisData.push(response.data.response.docs[i].headline.main);
-	                                                // 	//sendThisData+=response.data.response.docs[i].headline.main;
-	                                                // }
-	                                                // for(var i=0;i<response.data.response.docs.length;i++){
-	                                                //      sendThisData.push(response.data.response.docs[i].headline.main);
-	                                                // 	//sendThisData+=response.data.response.docs[i].headline.main;
-	                                                // }
-	                                                // for(var i=0;i<response.data.response.docs.length;i++){
-	                                                //      sendThisData.push(response.data.response.docs[i].pub_main);
-	                                                // 	//sendThisData+=response.data.response.docs[i].headline.main;
-	                                                // }
-	                                                //
-	                                                // /////////////////////////////////////////////////////////////
-	                                                // console.log(response.data.response.docs[0].pub_date);
-	                                                //console.log(response.data);
-	                                                // var doc = response.data.response.docs
-	                                                // var returnData = [];
-	                                                // for (var i = 0; i < doc.length; i++) {
-	                                                //      if(i < 5) {
-	                                                //     returnData.push({title: doc[i].headline.main, url: doc[i].web_url, date:  doc[i].pub_date});
-	                                                //      }
-	                                                // }
-	                                                // console.log("returnData")
-	                                                // var doc = response.data.response.docs;
-	                                                // var returnData = [];
-	                                                // for (var i = 0; i < doc.length; i++) {
-	                                                //      if(i < 5) {
-	                                                //     returnData.push({title: doc[i].headline.main, url: doc[i].web_url, date:  doc[i].pub_date});
-	                                                //      }
-	                                                // }
-	                                                // console.log("returnData");
-
-	                                                var doc = response.data.response.docs;
-	                                                var returnData = [[], [], [], [], []];
-	                                                for (var i = 0; i < returnData.length; i++) {
-	                                                                returnData[i].push(doc[i].headline.main);
-	                                                                returnData[i].push(doc[i].web_url);
-	                                                                returnData[i].push(doc[i].pub_date);
-	                                                }
-	                                                /////////////////////////////////////////////////////////////
-	                                                //return JSON.stringify(response);
-	                                                // return sendThisData;
-	                                                return returnData;
-	                                });
-	                }
-
-	};
-
-	// We export the helpers function (which contains getGithubInfo)
-	module.exports = helpers;
-
-/***/ },
-/* 227 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(228);
-
-/***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
-	var defaults = __webpack_require__(229);
-	var utils = __webpack_require__(230);
-	var dispatchRequest = __webpack_require__(232);
-	var InterceptorManager = __webpack_require__(241);
-	var isAbsoluteURL = __webpack_require__(242);
-	var combineURLs = __webpack_require__(243);
-	var bind = __webpack_require__(244);
-	var transformData = __webpack_require__(236);
+	var defaults = __webpack_require__(226);
+	var utils = __webpack_require__(227);
+	var dispatchRequest = __webpack_require__(229);
+	var InterceptorManager = __webpack_require__(238);
+	var isAbsoluteURL = __webpack_require__(239);
+	var combineURLs = __webpack_require__(240);
+	var bind = __webpack_require__(241);
+	var transformData = __webpack_require__(233);
 
 	function Axios(defaultConfig) {
 	  this.defaults = utils.merge({}, defaultConfig);
@@ -26037,7 +25739,7 @@
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(245);
+	axios.spread = __webpack_require__(242);
 
 	// Provide aliases for supported request methods
 	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
@@ -26065,13 +25767,13 @@
 
 
 /***/ },
-/* 229 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
-	var normalizeHeaderName = __webpack_require__(231);
+	var utils = __webpack_require__(227);
+	var normalizeHeaderName = __webpack_require__(228);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -26143,7 +25845,7 @@
 
 
 /***/ },
-/* 230 */
+/* 227 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26426,12 +26128,12 @@
 
 
 /***/ },
-/* 231 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(227);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -26444,7 +26146,7 @@
 
 
 /***/ },
-/* 232 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -26466,10 +26168,10 @@
 	        adapter = config.adapter;
 	      } else if (typeof XMLHttpRequest !== 'undefined') {
 	        // For browsers use XHR adapter
-	        adapter = __webpack_require__(233);
+	        adapter = __webpack_require__(230);
 	      } else if (typeof process !== 'undefined') {
 	        // For node use HTTP adapter
-	        adapter = __webpack_require__(233);
+	        adapter = __webpack_require__(230);
 	      }
 
 	      if (typeof adapter === 'function') {
@@ -26485,18 +26187,18 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 233 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(230);
-	var buildURL = __webpack_require__(234);
-	var parseHeaders = __webpack_require__(235);
-	var transformData = __webpack_require__(236);
-	var isURLSameOrigin = __webpack_require__(237);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(238);
-	var settle = __webpack_require__(239);
+	var utils = __webpack_require__(227);
+	var buildURL = __webpack_require__(231);
+	var parseHeaders = __webpack_require__(232);
+	var transformData = __webpack_require__(233);
+	var isURLSameOrigin = __webpack_require__(234);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(235);
+	var settle = __webpack_require__(236);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  var requestData = config.data;
@@ -26593,7 +26295,7 @@
 	  // This is only done if running in a standard browser environment.
 	  // Specifically not if we're in a web worker, or react-native.
 	  if (utils.isStandardBrowserEnv()) {
-	    var cookies = __webpack_require__(240);
+	    var cookies = __webpack_require__(237);
 
 	    // Add xsrf header
 	    var xsrfValue = config.withCredentials || isURLSameOrigin(config.url) ?
@@ -26654,12 +26356,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 234 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(227);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -26728,12 +26430,12 @@
 
 
 /***/ },
-/* 235 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(227);
 
 	/**
 	 * Parse headers into an object
@@ -26771,12 +26473,12 @@
 
 
 /***/ },
-/* 236 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(227);
 
 	/**
 	 * Transform the data for a request or a response
@@ -26797,12 +26499,12 @@
 
 
 /***/ },
-/* 237 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(227);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -26871,7 +26573,7 @@
 
 
 /***/ },
-/* 238 */
+/* 235 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26913,7 +26615,7 @@
 
 
 /***/ },
-/* 239 */
+/* 236 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26937,12 +26639,12 @@
 
 
 /***/ },
-/* 240 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(227);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -26996,12 +26698,12 @@
 
 
 /***/ },
-/* 241 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(230);
+	var utils = __webpack_require__(227);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -27054,7 +26756,7 @@
 
 
 /***/ },
-/* 242 */
+/* 239 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27074,7 +26776,7 @@
 
 
 /***/ },
-/* 243 */
+/* 240 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27092,7 +26794,7 @@
 
 
 /***/ },
-/* 244 */
+/* 241 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27109,7 +26811,7 @@
 
 
 /***/ },
-/* 245 */
+/* 242 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27140,6 +26842,329 @@
 	  };
 	};
 
+
+/***/ },
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// Include React
+	var React = __webpack_require__(1);
+	var axios = __webpack_require__(224);
+
+	var buttonStyle = {
+	     marginRight: '20px',
+	     marginLeft: '10px',
+	     clear: 'both',
+	     marginBottom: '10px'
+	};
+
+	var articleStyle = {
+	     display: 'inline-block',
+	     minWidth: '500px'
+	};
+
+	var Saved = __webpack_require__(244);
+
+	// This is the results component
+	var Results = React.createClass({
+	     displayName: 'Results',
+
+
+	     getInitialState: function getInitialState() {
+	          return {
+	               title: "",
+	               url: ""
+	          };
+	     },
+
+	     saveArticle: function saveArticle(event) {
+	          var theurl = event.currentTarget.dataset.url;
+	          var thetitle = event.currentTarget.dataset.title;
+	          this.setState({ title: thetitle });
+	          this.setState({ url: theurl });
+	          axios.post('/api', { title: thetitle, url: theurl }).then(function (results) {
+	               console.log("Posted to MongoDB");
+	          });
+	     },
+
+	     // Here we render the function
+	     render: function render() {
+
+	          return React.createElement(
+	               'div',
+	               { className: 'col-lg-12' },
+	               React.createElement(
+	                    'div',
+	                    { className: 'panel panel-default' },
+	                    React.createElement(
+	                         'div',
+	                         { className: 'panel-heading' },
+	                         React.createElement(
+	                              'h3',
+	                              { className: 'panel-title text-center' },
+	                              'Results'
+	                         )
+	                    ),
+	                    React.createElement(
+	                         'div',
+	                         { className: 'panel-body text-left' },
+	                         React.createElement(
+	                              'h4',
+	                              null,
+	                              React.createElement(
+	                                   'button',
+	                                   { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.saveArticle, 'data-url': this.props.url0, 'data-title': this.props.results0 },
+	                                   'Save'
+	                              ),
+	                              React.createElement(
+	                                   'a',
+	                                   { style: articleStyle, href: this.props.url0, target: '_blank' },
+	                                   this.props.results0
+	                              )
+	                         ),
+	                         React.createElement(
+	                              'h4',
+	                              null,
+	                              React.createElement(
+	                                   'button',
+	                                   { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.saveArticle, 'data-url': this.props.url1, 'data-title': this.props.results1 },
+	                                   'Save'
+	                              ),
+	                              React.createElement(
+	                                   'a',
+	                                   { style: articleStyle, href: this.props.url1, target: '_blank' },
+	                                   this.props.results1
+	                              )
+	                         ),
+	                         React.createElement(
+	                              'h4',
+	                              null,
+	                              React.createElement(
+	                                   'button',
+	                                   { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.saveArticle, 'data-url': this.props.url2, 'data-title': this.props.results2 },
+	                                   'Save'
+	                              ),
+	                              React.createElement(
+	                                   'a',
+	                                   { style: articleStyle, href: this.props.url2, target: '_blank' },
+	                                   this.props.results2
+	                              )
+	                         ),
+	                         React.createElement(
+	                              'h4',
+	                              null,
+	                              React.createElement(
+	                                   'button',
+	                                   { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.saveArticle, 'data-url': this.props.url3, 'data-title': this.props.results3 },
+	                                   'Save'
+	                              ),
+	                              React.createElement(
+	                                   'a',
+	                                   { style: articleStyle, href: this.props.url3, target: '_blank' },
+	                                   this.props.results3
+	                              )
+	                         ),
+	                         React.createElement(
+	                              'h4',
+	                              null,
+	                              React.createElement(
+	                                   'button',
+	                                   { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.saveArticle, 'data-url': this.props.url4, 'data-title': this.props.results4 },
+	                                   'Save'
+	                              ),
+	                              React.createElement(
+	                                   'a',
+	                                   { style: articleStyle, href: this.props.url4, target: '_blank' },
+	                                   this.props.results4
+	                              )
+	                         )
+	                    )
+	               ),
+	               React.createElement(
+	                    'div',
+	                    { className: 'row' },
+	                    React.createElement(Saved, { savedtitle: this.state.title, savedurl: this.state.url })
+	               )
+	          );
+	     }
+	});
+
+	// Export the component back for use in other files
+	module.exports = Results;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	// Include React
+	var React = __webpack_require__(1);
+
+	// This is the results component
+	var Saved = React.createClass({
+	  displayName: "Saved",
+
+	  // Here we render the function
+	  render: function render() {
+
+	    return React.createElement(
+	      "div",
+	      { className: "col-lg-12" },
+	      React.createElement(
+	        "div",
+	        { className: "panel panel-default" },
+	        React.createElement(
+	          "div",
+	          { className: "panel-heading" },
+	          React.createElement(
+	            "h3",
+	            { className: "panel-title text-center" },
+	            "Saved"
+	          )
+	        ),
+	        React.createElement(
+	          "div",
+	          { className: "panel-body text-center" },
+	          React.createElement(
+	            "h4",
+	            null,
+	            React.createElement(
+	              "a",
+	              { href: this.props.savedurl },
+	              this.props.savedtitle
+	            )
+	          ),
+	          React.createElement(
+	            "h4",
+	            null,
+	            "Saved Two"
+	          ),
+	          React.createElement(
+	            "h4",
+	            null,
+	            "Saved Three"
+	          ),
+	          React.createElement(
+	            "h4",
+	            null,
+	            "Saved Four"
+	          ),
+	          React.createElement(
+	            "h4",
+	            null,
+	            "Saved Five"
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	// Export the component back for use in other files
+	module.exports = Saved;
+
+/***/ },
+/* 245 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	// Include the axios package for performing HTTP requests (promise based alternative to request)
+	var axios = __webpack_require__(224);
+
+	// This variable will be pre-programmed with our authentication key (the one we received when we registered)
+	var authKey = "159df7a0ef7748f482425129c491ff9d";
+
+	// SETUP VARIABLES
+	// ==========================================================
+
+	// This variable will be pre-programmed with our authentication key (the one we received when we registered)
+	// var authKey = "159df7a0ef7748f482425129c491ff9d";
+	//
+	// // These variables will hold the results we get from the user's inputs via HTML
+	// var queryTerm 	= "Iraq";
+	// //var numArticles 	= 5;
+	// var startYear 	= 1990;
+	// var endYear		= 2000;
+	//
+	// // Based on the queryTerm we will create a queryURL
+	// var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + queryTerm + "&begin_date=" + startYear + "&end_date=" + endYear;
+	//
+	// //"https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=159df7a0ef7748f482425129c491ff9d&q=Iraq?begin_date=1999?end_date=2000";
+	//
+	// // Array to hold the various article info
+	// var articleCounter = 0;
+
+	// Helper Functions (in this case the only one is runQuery)
+	var helpers = {
+
+	                runQuery: function runQuery(queryTerm, startYear, endYear) {
+	                                // Based on the queryTerm we will create a queryURL
+	                                var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + queryTerm + "&begin_date=" + startYear + "&end_date=" + endYear;
+
+	                                //console.log("The article limit is" + numArticles + "and the query url is: " + queryURL);
+	                                //console.log("The query url is: " + queryURL);
+
+	                                //Figure out the geolocation
+
+	                                return axios.get(queryURL).then(function (response) {
+	                                                console.log(response);
+	                                                var sendThisData = [];
+	                                                // for(var i=0;i<response.data.response.docs.length;i++){
+	                                                //      sendThisData.push(response.data.response.docs[i].headline.main);
+	                                                // 	//sendThisData+=response.data.response.docs[i].headline.main;
+	                                                // }
+	                                                // for(var i=0;i<response.data.response.docs.length;i++){
+	                                                //      sendThisData.push(response.data.response.docs[i].headline.main);
+	                                                // 	//sendThisData+=response.data.response.docs[i].headline.main;
+	                                                // }
+	                                                // for(var i=0;i<response.data.response.docs.length;i++){
+	                                                //      sendThisData.push(response.data.response.docs[i].pub_main);
+	                                                // 	//sendThisData+=response.data.response.docs[i].headline.main;
+	                                                // }
+	                                                //
+	                                                // /////////////////////////////////////////////////////////////
+	                                                // console.log(response.data.response.docs[0].pub_date);
+	                                                //console.log(response.data);
+	                                                // var doc = response.data.response.docs
+	                                                // var returnData = [];
+	                                                // for (var i = 0; i < doc.length; i++) {
+	                                                //      if(i < 5) {
+	                                                //     returnData.push({title: doc[i].headline.main, url: doc[i].web_url, date:  doc[i].pub_date});
+	                                                //      }
+	                                                // }
+	                                                // console.log("returnData")
+	                                                // var doc = response.data.response.docs;
+	                                                // var returnData = [];
+	                                                // for (var i = 0; i < doc.length; i++) {
+	                                                //      if(i < 5) {
+	                                                //     returnData.push({title: doc[i].headline.main, url: doc[i].web_url, date:  doc[i].pub_date});
+	                                                //      }
+	                                                // }
+	                                                // console.log("returnData");
+
+	                                                var doc = response.data.response.docs;
+	                                                var returnData = [[], [], [], [], []];
+	                                                for (var i = 0; i < returnData.length; i++) {
+	                                                                returnData[i].push(doc[i].headline.main);
+	                                                                returnData[i].push(doc[i].web_url);
+	                                                                returnData[i].push(doc[i].pub_date);
+	                                                }
+
+	                                                /////////////////////////////////////////////////////////////
+	                                                //return JSON.stringify(response);
+	                                                // return sendThisData;
+	                                                return returnData;
+	                                });
+	                }
+
+	};
+
+	// We export the helpers function (which contains getGithubInfo)
+	module.exports = helpers;
 
 /***/ }
 /******/ ]);
