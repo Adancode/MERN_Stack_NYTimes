@@ -36,6 +36,10 @@ var Main = React.createClass({
 
 	},
 
+     saveArticle: function() {
+
+     },
+
      // If the component changes (i.e. if a search is entered)...handleClick
      handleClick: function(){
           // Run the query for the address
@@ -116,7 +120,7 @@ var Main = React.createClass({
 					<div className="row">
 
 						{/*Added this.props.children to dump all of the child components into place*/}
-                              <Results results0={this.state.results0} results1={this.state.results1} results2={this.state.results2} results3={this.state.results3} results4={this.state.results4} url0={this.state.url0} url1={this.state.url1} url2={this.state.url2} url3={this.state.url3} url4={this.state.url4}/>
+                              <Results results0={this.state.results0} results1={this.state.results1} results2={this.state.results2} results3={this.state.results3} results4={this.state.results4} url0={this.state.url0} url1={this.state.url1} url2={this.state.url2} url3={this.state.url3} url4={this.state.url4} saveArticle={this.state.saveArticle}/>
 
 					</div>
 

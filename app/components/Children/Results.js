@@ -1,6 +1,18 @@
 // Include React
 var React = require('react');
 
+var buttonStyle = {
+  marginRight: '20px',
+  marginLeft: '10px',
+  clear: 'both',
+  marginBottom: '10px'
+};
+
+var articleStyle = {
+  display: 'inline-block',
+  minWidth: '500px'
+};
+
 // This is the results component
 var Results = React.createClass({
 
@@ -15,12 +27,12 @@ var Results = React.createClass({
      					<h3 className="panel-title text-center">Results</h3>
      				</div>
      				<div className="panel-body text-left">
+     						<h4><button style={buttonStyle} className="btn btn-success btn-lg" type="button" onClick={this.props.saveArticle}>Save</button><a style={articleStyle} href={this.props.url0} target="_blank">{this.props.results0}</a></h4>
+                                   <h4><button style={buttonStyle} className="btn btn-success btn-lg" type="button" onClick={this.props.saveArticle}>Save</button><a style={articleStyle} href={this.props.url1} target="_blank">{this.props.results1}</a></h4>
+                                   <h4><button style={buttonStyle} className="btn btn-success btn-lg" type="button" onClick={this.props.saveArticle}>Save</button><a style={articleStyle} href={this.props.url2} target="_blank">{this.props.results2}</a></h4>
+                                   <h4><button style={buttonStyle} className="btn btn-success btn-lg" type="button" onClick={this.props.saveArticle}>Save</button><a style={articleStyle} href={this.props.url3} target="_blank">{this.props.results3}</a></h4>
+                                   <h4><button style={buttonStyle} className="btn btn-success btn-lg" type="button" onClick={this.props.saveArticle}>Save</button><a style={articleStyle} href={this.props.url4} target="_blank">{this.props.results4}</a></h4>
 
-     						<h4><a href={this.props.url0}>{this.props.results0}</a></h4>
-                                   <h4><a href={this.props.url1}>{this.props.results1}</a></h4>
-                                   <h4><a href={this.props.url2}>{this.props.results2}</a></h4>
-                                   <h4><a href={this.props.url3}>{this.props.results3}</a></h4>
-                                   <h4><a href={this.props.url4}>{this.props.results4}</a></h4>
      						{/* <p>{this.props.address}</p> */}
 
      				</div>

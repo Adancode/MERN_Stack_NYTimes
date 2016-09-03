@@ -25481,6 +25481,8 @@
 	          this.setState(newState);
 	     },
 
+	     saveArticle: function saveArticle() {},
+
 	     // If the component changes (i.e. if a search is entered)...handleClick
 	     handleClick: function handleClick() {
 	          // Run the query for the address
@@ -25611,7 +25613,7 @@
 	                    React.createElement(
 	                         'div',
 	                         { className: 'row' },
-	                         React.createElement(Results, { results0: this.state.results0, results1: this.state.results1, results2: this.state.results2, results3: this.state.results3, results4: this.state.results4, url0: this.state.url0, url1: this.state.url1, url2: this.state.url2, url3: this.state.url3, url4: this.state.url4 })
+	                         React.createElement(Results, { results0: this.state.results0, results1: this.state.results1, results2: this.state.results2, results3: this.state.results3, results4: this.state.results4, url0: this.state.url0, url1: this.state.url1, url2: this.state.url2, url3: this.state.url3, url4: this.state.url4, saveArticle: this.state.saveArticle })
 	                    ),
 	                    React.createElement(
 	                         'div',
@@ -25638,79 +25640,116 @@
 /* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	// Include React
 	var React = __webpack_require__(1);
 
+	var buttonStyle = {
+	  marginRight: '20px',
+	  marginLeft: '10px',
+	  clear: 'both',
+	  marginBottom: '10px'
+	};
+
+	var articleStyle = {
+	  display: 'inline-block',
+	  minWidth: '500px'
+	};
+
 	// This is the results component
 	var Results = React.createClass({
-	  displayName: "Results",
+	  displayName: 'Results',
 
 	  // Here we render the function
 	  render: function render() {
 	    console.log(this.props.results1);
 	    console.log(this.props.results1);
 	    return React.createElement(
-	      "div",
-	      { className: "col-lg-12" },
+	      'div',
+	      { className: 'col-lg-12' },
 	      React.createElement(
-	        "div",
-	        { className: "panel panel-default" },
+	        'div',
+	        { className: 'panel panel-default' },
 	        React.createElement(
-	          "div",
-	          { className: "panel-heading" },
+	          'div',
+	          { className: 'panel-heading' },
 	          React.createElement(
-	            "h3",
-	            { className: "panel-title text-center" },
-	            "Results"
+	            'h3',
+	            { className: 'panel-title text-center' },
+	            'Results'
 	          )
 	        ),
 	        React.createElement(
-	          "div",
-	          { className: "panel-body text-left" },
+	          'div',
+	          { className: 'panel-body text-left' },
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
 	            React.createElement(
-	              "a",
-	              { href: this.props.url0 },
+	              'button',
+	              { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.props.saveArticle },
+	              'Save'
+	            ),
+	            React.createElement(
+	              'a',
+	              { style: articleStyle, href: this.props.url0, target: '_blank' },
 	              this.props.results0
 	            )
 	          ),
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
 	            React.createElement(
-	              "a",
-	              { href: this.props.url1 },
+	              'button',
+	              { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.props.saveArticle },
+	              'Save'
+	            ),
+	            React.createElement(
+	              'a',
+	              { style: articleStyle, href: this.props.url1, target: '_blank' },
 	              this.props.results1
 	            )
 	          ),
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
 	            React.createElement(
-	              "a",
-	              { href: this.props.url2 },
+	              'button',
+	              { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.props.saveArticle },
+	              'Save'
+	            ),
+	            React.createElement(
+	              'a',
+	              { style: articleStyle, href: this.props.url2, target: '_blank' },
 	              this.props.results2
 	            )
 	          ),
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
 	            React.createElement(
-	              "a",
-	              { href: this.props.url3 },
+	              'button',
+	              { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.props.saveArticle },
+	              'Save'
+	            ),
+	            React.createElement(
+	              'a',
+	              { style: articleStyle, href: this.props.url3, target: '_blank' },
 	              this.props.results3
 	            )
 	          ),
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
 	            React.createElement(
-	              "a",
-	              { href: this.props.url4 },
+	              'button',
+	              { style: buttonStyle, className: 'btn btn-success btn-lg', type: 'button', onClick: this.props.saveArticle },
+	              'Save'
+	            ),
+	            React.createElement(
+	              'a',
+	              { style: articleStyle, href: this.props.url4, target: '_blank' },
 	              this.props.results4
 	            )
 	          )
