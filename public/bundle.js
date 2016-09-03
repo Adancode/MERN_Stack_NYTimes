@@ -25487,11 +25487,24 @@
 	          helpers.runQuery(this.state.search_term, this.state.begin_year, this.state.end_year).then(function (data) {
 	               console.log(data);
 	               //var string = JSON.stringify(data);
-	               this.setState({ results0: data[0].title });
-	               this.setState({ results1: data[1].title });
-	               this.setState({ results2: data[2].title });
-	               this.setState({ results3: data[3].title });
-	               this.setState({ results4: data[4].title });
+	               this.setState({ results0: data[0][0] });
+	               this.setState({ results1: data[1][0] });
+	               this.setState({ results2: data[2][0] });
+	               this.setState({ results3: data[3][0] });
+	               this.setState({ results4: data[4][0] });
+	               this.setState({ url0: data[0][1] });
+	               this.setState({ url1: data[1][1] });
+	               this.setState({ url2: data[2][1] });
+	               this.setState({ url3: data[3][1] });
+	               this.setState({ url4: data[4][1] });
+	               console.log(this.state.results0);
+	               console.log(this.state.results1);
+	               // this.setState({resultsTitle0: data[0].title, resultsurl0: data[0].url, resultsDate0: data[0].date});
+	               // this.setState({resultsTitle1: data[1].title, resultsurl1: data[1].url, resultsDate1: data[1].date});
+	               // this.setState({resultsTitle2: data[2].title, resultsurl2: data[2].url, resultsDate2: data[2].date});
+	               // this.setState({resultsTitle3: data[3].title, resultsurl3: data[3].url, resultsDate3: data[3].date});
+	               // this.setState({resultsTitle4: data[4].title, resultsurl4: data[4].url, resultsDate4: data[4].date});
+
 	               //console.log(string);
 	          }.bind(this)); /*.then(function(data) {
 	                         }.bind(this))*/
@@ -25598,7 +25611,7 @@
 	                    React.createElement(
 	                         'div',
 	                         { className: 'row' },
-	                         React.createElement(Results, { results0: this.state.results0, results1: this.state.results1, results2: this.state.results2, results3: this.state.results3, results4: this.state.results4 })
+	                         React.createElement(Results, { results0: this.state.results0, results1: this.state.results1, results2: this.state.results2, results3: this.state.results3, results4: this.state.results4, url0: this.state.url0, url1: this.state.url1, url2: this.state.url2, url3: this.state.url3, url4: this.state.url4 })
 	                    ),
 	                    React.createElement(
 	                         'div',
@@ -25636,7 +25649,8 @@
 
 	  // Here we render the function
 	  render: function render() {
-
+	    console.log(this.props.results1);
+	    console.log(this.props.results1);
 	    return React.createElement(
 	      "div",
 	      { className: "col-lg-12" },
@@ -25658,27 +25672,47 @@
 	          React.createElement(
 	            "h4",
 	            null,
-	            this.props.results0
+	            React.createElement(
+	              "a",
+	              { href: this.props.url0 },
+	              this.props.results0
+	            )
 	          ),
 	          React.createElement(
 	            "h4",
 	            null,
-	            this.props.results1
+	            React.createElement(
+	              "a",
+	              { href: this.props.url1 },
+	              this.props.results1
+	            )
 	          ),
 	          React.createElement(
 	            "h4",
 	            null,
-	            this.props.results2
+	            React.createElement(
+	              "a",
+	              { href: this.props.url2 },
+	              this.props.results2
+	            )
 	          ),
 	          React.createElement(
 	            "h4",
 	            null,
-	            this.props.results3
+	            React.createElement(
+	              "a",
+	              { href: this.props.url3 },
+	              this.props.results3
+	            )
 	          ),
 	          React.createElement(
 	            "h4",
 	            null,
-	            this.props.results4
+	            React.createElement(
+	              "a",
+	              { href: this.props.url4 },
+	              this.props.results4
+	            )
 	          )
 	        )
 	      )
@@ -25820,14 +25854,30 @@
 	                                                // /////////////////////////////////////////////////////////////
 	                                                // console.log(response.data.response.docs[0].pub_date);
 	                                                //console.log(response.data);
+	                                                // var doc = response.data.response.docs
+	                                                // var returnData = [];
+	                                                // for (var i = 0; i < doc.length; i++) {
+	                                                //      if(i < 5) {
+	                                                //     returnData.push({title: doc[i].headline.main, url: doc[i].web_url, date:  doc[i].pub_date});
+	                                                //      }
+	                                                // }
+	                                                // console.log("returnData")
+	                                                // var doc = response.data.response.docs;
+	                                                // var returnData = [];
+	                                                // for (var i = 0; i < doc.length; i++) {
+	                                                //      if(i < 5) {
+	                                                //     returnData.push({title: doc[i].headline.main, url: doc[i].web_url, date:  doc[i].pub_date});
+	                                                //      }
+	                                                // }
+	                                                // console.log("returnData");
+
 	                                                var doc = response.data.response.docs;
-	                                                var returnData = [];
-	                                                for (var i = 0; i < doc.length; i++) {
-	                                                                if (i < 5) {
-	                                                                                returnData.push({ title: doc[i].headline.main, url: doc[i].web_url, date: doc[i].pub_date });
-	                                                                }
+	                                                var returnData = [[], [], [], [], []];
+	                                                for (var i = 0; i < returnData.length; i++) {
+	                                                                returnData[i].push(doc[i].headline.main);
+	                                                                returnData[i].push(doc[i].web_url);
+	                                                                returnData[i].push(doc[i].pub_date);
 	                                                }
-	                                                console.log("returnData");
 	                                                /////////////////////////////////////////////////////////////
 	                                                //return JSON.stringify(response);
 	                                                // return sendThisData;

@@ -6,7 +6,8 @@ var Results = React.createClass({
 
 	// Here we render the function
 	render: function(){
-
+          console.log(this.props.results1);
+          console.log(this.props.results1);
 		return(
                <div className="col-lg-12">
      			<div className="panel panel-default">
@@ -15,11 +16,11 @@ var Results = React.createClass({
      				</div>
      				<div className="panel-body text-left">
 
-     						<h4>{this.props.results0}</h4>
-                                   <h4>{this.props.results1}</h4>
-                                   <h4>{this.props.results2}</h4>
-                                   <h4>{this.props.results3}</h4>
-                                   <h4>{this.props.results4}</h4>
+     						<h4><a href={this.props.url0}>{this.props.results0}</a></h4>
+                                   <h4><a href={this.props.url1}>{this.props.results1}</a></h4>
+                                   <h4><a href={this.props.url2}>{this.props.results2}</a></h4>
+                                   <h4><a href={this.props.url3}>{this.props.results3}</a></h4>
+                                   <h4><a href={this.props.url4}>{this.props.results4}</a></h4>
      						{/* <p>{this.props.address}</p> */}
 
      				</div>

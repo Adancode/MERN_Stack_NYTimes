@@ -43,16 +43,23 @@ var Main = React.createClass({
                .then(function(data){
                     console.log(data);
                     //var string = JSON.stringify(data);
-                    // this.setState({results0: data[0].title})
-                    // this.setState({results1: data[1].title})
-                    // this.setState({results2: data[2].title})
-                    // this.setState({results3: data[3].title})
-                    // this.setState({results4: data[4].title})
-                    this.setState({resultsTitle0: data[0].title, resultsurl0: data[0].url, resultsDate0: data[0].date});
-                    this.setState({resultsTitle1: data[1].title, resultsurl1: data[1].url, resultsDate1: data[1].date});
-                    this.setState({resultsTitle2: data[2].title, resultsurl2: data[2].url, resultsDate2: data[2].date});
-                    this.setState({resultsTitle3: data[3].title, resultsurl3: data[3].url, resultsDate3: data[3].date});
-                    this.setState({resultsTitle4: data[4].title, resultsurl4: data[4].url, resultsDate4: data[4].date})
+                    this.setState({results0: data[0][0]});
+                    this.setState({results1: data[1][0]});
+                    this.setState({results2: data[2][0]});
+                    this.setState({results3: data[3][0]});
+                    this.setState({results4: data[4][0]});
+                    this.setState({url0: data[0][1]});
+                    this.setState({url1: data[1][1]});
+                    this.setState({url2: data[2][1]});
+                    this.setState({url3: data[3][1]});
+                    this.setState({url4: data[4][1]});
+                    console.log(this.state.results0);
+                    console.log(this.state.results1);
+                    // this.setState({resultsTitle0: data[0].title, resultsurl0: data[0].url, resultsDate0: data[0].date});
+                    // this.setState({resultsTitle1: data[1].title, resultsurl1: data[1].url, resultsDate1: data[1].date});
+                    // this.setState({resultsTitle2: data[2].title, resultsurl2: data[2].url, resultsDate2: data[2].date});
+                    // this.setState({resultsTitle3: data[3].title, resultsurl3: data[3].url, resultsDate3: data[3].date});
+                    // this.setState({resultsTitle4: data[4].title, resultsurl4: data[4].url, resultsDate4: data[4].date});
 
                     //console.log(string);
                }.bind(this))/*.then(function(data) {
@@ -109,7 +116,7 @@ var Main = React.createClass({
 					<div className="row">
 
 						{/*Added this.props.children to dump all of the child components into place*/}
-                              <Results resultsTitle0={this.state.resultsTitle0} results1={this.state.results1} results2={this.state.results2} results3={this.state.results3} results4={this.state.results4}/>
+                              <Results results0={this.state.results0} results1={this.state.results1} results2={this.state.results2} results3={this.state.results3} results4={this.state.results4} url0={this.state.url0} url1={this.state.url1} url2={this.state.url2} url3={this.state.url3} url4={this.state.url4}/>
 
 					</div>
 
