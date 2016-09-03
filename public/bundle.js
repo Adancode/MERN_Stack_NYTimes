@@ -26890,14 +26890,19 @@
 	               console.log("secretword" + JSON.stringify(results));
 	               this.setState({ title0: results.data[0].title });
 	               this.setState({ url0: results.data[0].url });
+	               this.setState({ date0: results.data[0].date });
 	               this.setState({ title1: results.data[1].title });
 	               this.setState({ url1: results.data[1].url });
+	               this.setState({ date1: results.data[1].date });
 	               this.setState({ title2: results.data[2].title });
 	               this.setState({ url2: results.data[2].url });
+	               this.setState({ date2: results.data[2].date });
 	               this.setState({ title3: results.data[3].title });
 	               this.setState({ url3: results.data[3].url });
+	               this.setState({ date3: results.data[3].date });
 	               this.setState({ title4: results.data[4].title });
 	               this.setState({ url4: results.data[4].url });
+	               this.setState({ date4: results.data[4].date });
 	          }.bind(this));
 	     },
 
@@ -26997,7 +27002,7 @@
 	               React.createElement(
 	                    'div',
 	                    { className: 'row' },
-	                    React.createElement(Saved, { title0: this.state.title0, url0: this.state.url0, title1: this.state.title1, url1: this.state.url1, title2: this.state.title2, url2: this.state.url2, title3: this.state.title3, url3: this.state.url3, title4: this.state.title4, url4: this.state.url4 })
+	                    React.createElement(Saved, { title0: this.state.title0, url0: this.state.url0, date0: this.state.date0, title1: this.state.title1, url1: this.state.url1, date1: this.state.date1, title2: this.state.title2, url2: this.state.url2, date2: this.state.date2, title3: this.state.title3, url3: this.state.url3, date3: this.state.date3, title4: this.state.title4, url4: this.state.url4, date4: this.state.date4 })
 	               )
 	          );
 	     }
@@ -27065,7 +27070,9 @@
 	              'a',
 	              { href: this.props.url0 },
 	              this.props.title0
-	            )
+	            ),
+	            ' ',
+	            this.props.date0
 	          ),
 	          React.createElement(
 	            'h4',
@@ -27074,7 +27081,9 @@
 	              'a',
 	              { href: this.props.url1 },
 	              this.props.title1
-	            )
+	            ),
+	            ' ',
+	            this.props.date1
 	          ),
 	          React.createElement(
 	            'h4',
@@ -27083,7 +27092,9 @@
 	              'a',
 	              { href: this.props.url2 },
 	              this.props.title2
-	            )
+	            ),
+	            ' ',
+	            this.props.date2
 	          ),
 	          React.createElement(
 	            'h4',
@@ -27092,7 +27103,9 @@
 	              'a',
 	              { href: this.props.url3 },
 	              this.props.title3
-	            )
+	            ),
+	            ' ',
+	            this.props.date3
 	          ),
 	          React.createElement(
 	            'h4',
@@ -27101,7 +27114,9 @@
 	              'a',
 	              { href: this.props.url4 },
 	              this.props.title4
-	            )
+	            ),
+	            ' ',
+	            this.props.date4
 	          )
 	        )
 	      )

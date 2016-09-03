@@ -34,11 +34,11 @@ var Saved = React.createClass({
      				</div>
      				<div className="panel-body text-left">
 
-     						<h4><a href={this.props.url0}>{this.props.title0}</a></h4>
-                                   <h4><a href={this.props.url1}>{this.props.title1}</a></h4>
-                                   <h4><a href={this.props.url2}>{this.props.title2}</a></h4>
-                                   <h4><a href={this.props.url3}>{this.props.title3}</a></h4>
-                                   <h4><a href={this.props.url4}>{this.props.title4}</a></h4>
+     						<h4><a href={this.props.url0}>{this.props.title0}</a> {this.props.date0}</h4>
+                                   <h4><a href={this.props.url1}>{this.props.title1}</a> {this.props.date1}</h4>
+                                   <h4><a href={this.props.url2}>{this.props.title2}</a> {this.props.date2}</h4>
+                                   <h4><a href={this.props.url3}>{this.props.title3}</a> {this.props.date3}</h4>
+                                   <h4><a href={this.props.url4}>{this.props.title4}</a> {this.props.date4}</h4>
      				</div>
      			</div>
                </div>
