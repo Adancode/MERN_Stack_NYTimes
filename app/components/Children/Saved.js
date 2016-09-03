@@ -1,9 +1,28 @@
+var axios = require('axios');
 // Include React
 var React = require('react');
 
 // This is the results component
 var Saved = React.createClass({
+     getInitialState: function(){
+		return {
 
+		}
+	},
+
+     // componentDidUpdate: function() {
+     //      axios.get('/api')
+     //     .then(function(results){
+     //          console.log("secretword" + JSON.stringify(results));
+     //          console.log(results.data[0].title + "That is the title");
+     //          this.setState({title0: results.data[0].title});
+     //          this.setState({url0: results.data[0].url})
+     //          /*this.setState({title0: results.data[0].title});
+     //          this.setState({url0: results.data[0].url});
+     //          this.setState({title1: results.data[0].title});
+     //          this.setState({url1: results.data[0].url});*/
+     //     }.bind(this))
+     // },
 	// Here we render the function
 	render: function(){
 
@@ -13,14 +32,13 @@ var Saved = React.createClass({
      				<div className="panel-heading">
      					<h3 className="panel-title text-center">Saved</h3>
      				</div>
-     				<div className="panel-body text-center">
+     				<div className="panel-body text-left">
 
-     						<h4><a href={this.props.savedurl}>{this.props.savedtitle}</a></h4>
-                                   <h4>Saved Two</h4>
-                                   <h4>Saved Three</h4>
-                                   <h4>Saved Four</h4>
-                                   <h4>Saved Five</h4>
-     						{/* <p>{this.props.address}</p> */}
+     						<h4><a href={this.props.url0}>{this.props.title0}</a></h4>
+                                   <h4><a href={this.props.url1}>{this.props.title1}</a></h4>
+                                   <h4><a href={this.props.url2}>{this.props.title2}</a></h4>
+                                   <h4><a href={this.props.url3}>{this.props.title3}</a></h4>
+                                   <h4><a href={this.props.url4}>{this.props.title4}</a></h4>
      				</div>
      			</div>
                </div>

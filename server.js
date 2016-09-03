@@ -42,11 +42,10 @@ app.get('/', function(req, res){
   res.sendFile('./public/index.html');
 });
 
-app.get('/api/', function(req, res) {
+app.get('/api', function(req, res) {
 
   // This GET request will search for the latest clickCount
-  Articles.find({})
-    .exec(function(err, doc){
+  Articles.find({}).sort('-date').exec(function(err, doc){
 
            if(err){
              console.log(err);

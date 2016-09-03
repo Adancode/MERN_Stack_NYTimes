@@ -21,7 +21,6 @@ var Main = React.createClass({
 			search_term: "Texas",
 			begin_year: "19900701",
                end_year: "20000701",
-               results: "passedResult"
 		}
 	},
 
@@ -41,7 +40,7 @@ var Main = React.createClass({
           // Run the query for the address
           helpers.runQuery(this.state.search_term, this.state.begin_year, this.state.end_year)
                .then(function(data){
-                    console.log(data);
+                    //console.log(data);
                     //var string = JSON.stringify(data);
                     this.setState({results0: data[0][0]});
                     this.setState({results1: data[1][0]});
@@ -53,8 +52,8 @@ var Main = React.createClass({
                     this.setState({url2: data[2][1]});
                     this.setState({url3: data[3][1]});
                     this.setState({url4: data[4][1]});
-                    console.log(this.state.results0);
-                    console.log(this.state.results1);
+                    //console.log(this.state.results0);
+                    //console.log(this.state.results1);
                     // this.setState({resultsTitle0: data[0].title, resultsurl0: data[0].url, resultsDate0: data[0].date});
                     // this.setState({resultsTitle1: data[1].title, resultsurl1: data[1].url, resultsDate1: data[1].date});
                     // this.setState({resultsTitle2: data[2].title, resultsurl2: data[2].url, resultsDate2: data[2].date});

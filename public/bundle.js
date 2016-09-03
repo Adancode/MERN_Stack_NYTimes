@@ -25466,8 +25466,7 @@
 	          return {
 	               search_term: "Texas",
 	               begin_year: "19900701",
-	               end_year: "20000701",
-	               results: "passedResult"
+	               end_year: "20000701"
 	          };
 	     },
 
@@ -25485,7 +25484,7 @@
 	     handleClick: function handleClick() {
 	          // Run the query for the address
 	          helpers.runQuery(this.state.search_term, this.state.begin_year, this.state.end_year).then(function (data) {
-	               console.log(data);
+	               //console.log(data);
 	               //var string = JSON.stringify(data);
 	               this.setState({ results0: data[0][0] });
 	               this.setState({ results1: data[1][0] });
@@ -25497,8 +25496,8 @@
 	               this.setState({ url2: data[2][1] });
 	               this.setState({ url3: data[3][1] });
 	               this.setState({ url4: data[4][1] });
-	               console.log(this.state.results0);
-	               console.log(this.state.results1);
+	               //console.log(this.state.results0);
+	               //console.log(this.state.results1);
 	               // this.setState({resultsTitle0: data[0].title, resultsurl0: data[0].url, resultsDate0: data[0].date});
 	               // this.setState({resultsTitle1: data[1].title, resultsurl1: data[1].url, resultsDate1: data[1].date});
 	               // this.setState({resultsTitle2: data[2].title, resultsurl2: data[2].url, resultsDate2: data[2].date});
@@ -26887,6 +26886,19 @@
 	          axios.post('/api', { title: thetitle, url: theurl }).then(function (results) {
 	               console.log("Posted to MongoDB");
 	          });
+	          axios.get('/api').then(function (results) {
+	               console.log("secretword" + JSON.stringify(results));
+	               this.setState({ title0: results.data[0].title });
+	               this.setState({ url0: results.data[0].url });
+	               this.setState({ title1: results.data[1].title });
+	               this.setState({ url1: results.data[1].url });
+	               this.setState({ title2: results.data[2].title });
+	               this.setState({ url2: results.data[2].url });
+	               this.setState({ title3: results.data[3].title });
+	               this.setState({ url3: results.data[3].url });
+	               this.setState({ title4: results.data[4].title });
+	               this.setState({ url4: results.data[4].url });
+	          }.bind(this));
 	     },
 
 	     // Here we render the function
@@ -26985,7 +26997,7 @@
 	               React.createElement(
 	                    'div',
 	                    { className: 'row' },
-	                    React.createElement(Saved, { savedtitle: this.state.title, savedurl: this.state.url })
+	                    React.createElement(Saved, { title0: this.state.title0, url0: this.state.url0, title1: this.state.title1, url1: this.state.url1, title2: this.state.title2, url2: this.state.url2, title3: this.state.title3, url3: this.state.url3, title4: this.state.title4, url4: this.state.url4 })
 	               )
 	          );
 	     }
@@ -26998,64 +27010,98 @@
 /* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
+	var axios = __webpack_require__(224);
 	// Include React
 	var React = __webpack_require__(1);
 
 	// This is the results component
 	var Saved = React.createClass({
-	  displayName: "Saved",
+	  displayName: 'Saved',
 
+	  getInitialState: function getInitialState() {
+	    return {};
+	  },
+
+	  // componentDidUpdate: function() {
+	  //      axios.get('/api')
+	  //     .then(function(results){
+	  //          console.log("secretword" + JSON.stringify(results));
+	  //          console.log(results.data[0].title + "That is the title");
+	  //          this.setState({title0: results.data[0].title});
+	  //          this.setState({url0: results.data[0].url})
+	  //          /*this.setState({title0: results.data[0].title});
+	  //          this.setState({url0: results.data[0].url});
+	  //          this.setState({title1: results.data[0].title});
+	  //          this.setState({url1: results.data[0].url});*/
+	  //     }.bind(this))
+	  // },
 	  // Here we render the function
 	  render: function render() {
 
 	    return React.createElement(
-	      "div",
-	      { className: "col-lg-12" },
+	      'div',
+	      { className: 'col-lg-12' },
 	      React.createElement(
-	        "div",
-	        { className: "panel panel-default" },
+	        'div',
+	        { className: 'panel panel-default' },
 	        React.createElement(
-	          "div",
-	          { className: "panel-heading" },
+	          'div',
+	          { className: 'panel-heading' },
 	          React.createElement(
-	            "h3",
-	            { className: "panel-title text-center" },
-	            "Saved"
+	            'h3',
+	            { className: 'panel-title text-center' },
+	            'Saved'
 	          )
 	        ),
 	        React.createElement(
-	          "div",
-	          { className: "panel-body text-center" },
+	          'div',
+	          { className: 'panel-body text-left' },
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
 	            React.createElement(
-	              "a",
-	              { href: this.props.savedurl },
-	              this.props.savedtitle
+	              'a',
+	              { href: this.props.url0 },
+	              this.props.title0
 	            )
 	          ),
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
-	            "Saved Two"
+	            React.createElement(
+	              'a',
+	              { href: this.props.url1 },
+	              this.props.title1
+	            )
 	          ),
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
-	            "Saved Three"
+	            React.createElement(
+	              'a',
+	              { href: this.props.url2 },
+	              this.props.title2
+	            )
 	          ),
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
-	            "Saved Four"
+	            React.createElement(
+	              'a',
+	              { href: this.props.url3 },
+	              this.props.title3
+	            )
 	          ),
 	          React.createElement(
-	            "h4",
+	            'h4',
 	            null,
-	            "Saved Five"
+	            React.createElement(
+	              'a',
+	              { href: this.props.url4 },
+	              this.props.title4
+	            )
 	          )
 	        )
 	      )

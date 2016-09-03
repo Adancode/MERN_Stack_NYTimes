@@ -35,6 +35,20 @@ var Results = React.createClass({
          .then(function(results){
               console.log("Posted to MongoDB");
          })
+         axios.get('/api')
+        .then(function(results){
+            console.log("secretword" + JSON.stringify(results));
+           this.setState({title0: results.data[0].title});
+           this.setState({url0: results.data[0].url});
+           this.setState({title1: results.data[1].title});
+           this.setState({url1: results.data[1].url});
+           this.setState({title2: results.data[2].title});
+           this.setState({url2: results.data[2].url});
+           this.setState({title3: results.data[3].title});
+           this.setState({url3: results.data[3].url});
+           this.setState({title4: results.data[4].title});
+           this.setState({url4: results.data[4].url});
+      }.bind(this))
 	},
 	// Here we render the function
 	render: function(){
@@ -60,7 +74,7 @@ var Results = React.createClass({
                     <div className="row">
 
                          {/*Added this.props.children to dump all of the child components into place*/}
-                         <Saved savedtitle={this.state.title} savedurl={this.state.url}/>
+                         <Saved title0={this.state.title0} url0={this.state.url0} title1={this.state.title1} url1={this.state.url1} title2={this.state.title2} url2={this.state.url2} title3={this.state.title3} url3={this.state.url3} title4={this.state.title4} url4={this.state.url4}/>
 
                     </div>
                </div>

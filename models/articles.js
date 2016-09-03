@@ -8,7 +8,8 @@ const ArticleSchema = new Schema({
         unique: true
     },
     date:{
-        date: Date
+        type: Date,
+        default: Date.now
     },
     url: {
         type: String,
