@@ -26,7 +26,7 @@ app.use(express.static('./public'));
 var Articles = require('./models/articles.js');
 var mongoose = require('mongoose');
 var uri = process.env.MONGODB_URI || 'mongodb://localhost/nytmern';
-mongoose.connect(uri);
+mongoose.connect(uri);  //This is to connect locally
 
 var db = mongoose.connection;
 //
