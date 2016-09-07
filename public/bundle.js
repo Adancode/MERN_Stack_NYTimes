@@ -25464,7 +25464,7 @@
 
 	     getInitialState: function getInitialState() {
 	          return {
-	               search_term: "Texas",
+	               search_term: "",
 	               begin_year: "19900701",
 	               end_year: "20000701"
 	          };
